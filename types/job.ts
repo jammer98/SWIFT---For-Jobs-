@@ -27,3 +27,8 @@ export interface JobFilters {
   page?: number;
   limit?: number;
 }
+
+export interface JobDetail extends Job {
+  description: string;
+  status: "open" | "closed";
+}

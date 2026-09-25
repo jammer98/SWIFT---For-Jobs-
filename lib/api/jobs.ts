@@ -1,5 +1,6 @@
 import { apiFetch } from "./client";
 import type { JobsListResponse, JobFilters } from "@/types/job";
+import type { JobDetail } from "@/types/job";
 
 export function getJobs(filters: JobFilters = {}) {
   const params = new URLSearchParams();
@@ -12,4 +13,8 @@ export function getJobs(filters: JobFilters = {}) {
 
   const query = params.toString();
   return apiFetch<JobsListResponse>(`/jobs${query ? `?${query}` : ""}`);
+}
+
+export function getJob(id: string) {
+  return apiFetch<JobDetail>(`/jobs/${id}`);
 }
